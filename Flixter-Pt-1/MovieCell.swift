@@ -11,7 +11,8 @@ import Nuke
 class MovieCell: UITableViewCell {
     
     
-    @IBOutlet weak var movieImageView: UIImageView!
+    
+    @IBOutlet weak var poster_path: UIImageView!
     @IBOutlet weak var original_titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     
@@ -24,7 +25,8 @@ class MovieCell: UITableViewCell {
         overviewLabel.text = movie.overview
 
         // Load image async via Nuke library image loading helper method
-        Nuke.loadImage(with: movie.poster_path, into: movieImageView)
+        Nuke.loadImage(with:URL(string:"https://image.tmdb.org/t/p/w500" +
+                                movie.poster_path.absoluteString)!, into: poster_path) 
     } 
     
     
